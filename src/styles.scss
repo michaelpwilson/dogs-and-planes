@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+$body-color: #f4f4f4;
+
+html, body { 
+    height: 100%;
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: $body-color;
+}
+
+.mat-tab-header {
+    background: white;
+
+    .mat-tab-label {
+        flex: 1;
+    }
+}
+
+.u-padding {
+    padding: 1em;
+}

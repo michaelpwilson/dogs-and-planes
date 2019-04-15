@@ -1,0 +1,197 @@
+openapi: 3.0.0
+info:
+  title: Dogs & Planes API
+  description: A sample API for the dogs & planes app
+  version: 0.0.1
+servers:
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+paths:
+  /dogs:
+    get:
+      summary: Returns a list of dogs.
+      responses:
+        '200':    # status code
+          description: A JSON array of dog objects
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Dog'
+  /dogs/{id}:
+    get:
+      summary: Returns a single dog.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id associated to the dog
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':    # status code
+          description: A JSON object of the found dog
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Dog'
+    put:
+      summary: Updates a single dog.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id associated to the dog
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dog'
+      responses:
+        '200':    # status code
+          description: A JSON object of the updated dog
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Dog'
+    delete:
+      summary: Deletes a single dog.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id associated to the dog
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':    # status code
+          description: An OK response
+          content:
+            application/json:
+              schema: 
+                type: string
+                example: OK
+  /planes:
+    get:
+      summary: Returns a list of planes.
+      responses:
+        '200':    # status code
+          description: A JSON array of plane objects
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Plane'
+  /planes/{id}:
+    get:
+      summary: Returns a single plane.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id associated to the plane
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':    # status code
+          description: A JSON object of the found plane
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Plane'
+    put:
+      summary: Updates a single plane.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id associated to the plane
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plane'
+      responses:
+        '200':    # status code
+          description: A JSON object of the updated plane
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Plane'
+    delete:
+      summary: Deletes a single plane.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id associated to the plane
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':    # status code
+          description: An OK response
+          content:
+            application/json:
+              schema: 
+                type: string
+                example: OK
+components:
+  schemas:
+    Dog:
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 4
+        name:
+          type: string
+          example: Terry
+        image:
+          type: string
+          example: http://localhost:4200/assets/images/dog-8.jpg
+      # Both properties are required
+      required:  
+        - id
+        - name
+        - image
+        - createdAt
+        - updatedAt
+    Plane:
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 4
+        name:
+          type: string
+          example: Boeing-474
+        image:
+          type: string
+          example: http://localhost:4200/assets/images/plane-8.jpg
+      # Both properties are required
+      required:  
+        - id
+        - name
+        - image
+        - createdAt
+        - updatedAt
